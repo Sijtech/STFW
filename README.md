@@ -1,3 +1,3 @@
 # STFW
 Schule
-Klasse EIT1518
+EIT1518
