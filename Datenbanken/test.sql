@@ -1,1 +1,1 @@
-SELECT * FROM Abteilung;
+SELECT * FROM Monteur;
