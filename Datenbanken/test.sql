@@ -1,1 +1,1 @@
-SELECT * FROM Monteur;
+SELECT * FROM Funktion;
