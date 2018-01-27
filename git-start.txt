@@ -1,0 +1,18 @@
+## open repo from github
+git clone https://github.com/Sijtech/STFW.git
+
+## prepare local repo changes for commit
+git add . OR
+git add foldername
+
+## show changes in local repo
+git status
+
+## commit local changes (are not uploaded yet)
+git commit -m "Change from linux"
+
+## push changes to github
+git push origin
+
+## pull changes from github
+git pull origin
