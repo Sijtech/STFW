@@ -1,3 +1,3 @@
 # STFW
-Schule
+School
 EIT1518
