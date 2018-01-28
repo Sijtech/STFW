@@ -1,12 +1,17 @@
 ## open repo from github
 git clone https://github.com/Sijtech/STFW.git
 
+## show changes in local repo
+git status
+
+## show git settings on local computer
+git config --list
+git config --local --list   #only one explicit repo on the computer "git-repo/.git"
+git config --global --list  #all repos on the computer "~/.git"
+
 ## prepare local repo changes for commit
 git add . OR
 git add foldername
-
-## show changes in local repo
-git status
 
 ## commit local changes (are not uploaded yet)
 git commit -m "Change from linux"
