@@ -9,6 +9,9 @@ git config --list
 git config --local --list   #only one explicit repo on the computer "git-repo/.git"
 git config --global --list  #all repos on the computer "~/.git"
 
+## change remote url of repo. for example https -> ssh
+git remote set-url origin git@github.com:Sijtech/STFW.git
+
 ## prepare local repo changes for commit
 git add . OR
 git add foldername
