@@ -13,3 +13,6 @@ git commit -m "Change from linux"
 
 ## push changes to github
 git push origin
+
+## pull changes from github
+git pull origin
