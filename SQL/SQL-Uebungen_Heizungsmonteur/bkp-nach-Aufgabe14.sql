@@ -67,7 +67,7 @@ CREATE TABLE `Fahrten` (
 
 LOCK TABLES `Fahrten` WRITE;
 /*!40000 ALTER TABLE `Fahrten` DISABLE KEYS */;
-INSERT INTO `Fahrten` VALUES (1,'F1','M1','2017-08-21',34098,35001),(2,'F1','M2','2017-11-21',34098,85001),(3,'F2','M2','2017-09-21',34098,55001),(4,'F1','M1','2017-06-21',44098,45001),(5,'F3','M3','2017-12-21',54098,55001),(6,'F2','M5','2018-01-19',55001,55017);
+INSERT INTO `Fahrten` VALUES (1,'F1','M1','2017-08-21',34098,35001),(2,'F1','M2','2017-11-21',34098,85001),(3,'F2','M2','2017-09-21',34098,55001),(4,'F1','M1','2017-06-21',44098,45001),(5,'F3','M3','2017-12-21',54098,55001);
 /*!40000 ALTER TABLE `Fahrten` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -85,6 +85,7 @@ CREATE TABLE `Fahrzeuge` (
   `letzte_Wartung` date NOT NULL,
   `letzter_unterhalt` date NOT NULL,
   `Fahrzeug_Schild` varchar(8) NOT NULL,
+  `Sitzplätze` int(11) DEFAULT NULL,
   PRIMARY KEY (`Fahrzeuge_Nr`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -95,7 +96,7 @@ CREATE TABLE `Fahrzeuge` (
 
 LOCK TABLES `Fahrzeuge` WRITE;
 /*!40000 ALTER TABLE `Fahrzeuge` DISABLE KEYS */;
-INSERT INTO `Fahrzeuge` VALUES ('F1','Opel','Astra','2017-08-21','2017-04-26','ZH112100'),('F2','BMW','M1','2016-12-21','2014-04-26','ZH187333'),('F3','Ford','Fiesta','2017-10-13','2017-03-17','TG214956');
+INSERT INTO `Fahrzeuge` VALUES ('F1','Opel','Astra','2017-08-21','2017-04-26','ZH112100',5),('F2','BMW','M1','2016-12-21','2014-04-26','ZH187333',2),('F3','Ford','Fiesta','2017-10-13','2017-03-17','TG214956',4);
 /*!40000 ALTER TABLE `Fahrzeuge` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -175,7 +176,7 @@ CREATE TABLE `Monteur` (
 
 LOCK TABLES `Monteur` WRITE;
 /*!40000 ALTER TABLE `Monteur` DISABLE KEYS */;
-INSERT INTO `Monteur` VALUES ('M1','Roth','F2','A3',5500),('M2','Gelb','F1','A2',5500),('M3','Braun','F1','A1',5500),('M4','Weiss','F2','A2',5500),('M5','Rudi Rosa','F1','A3',5500);
+INSERT INTO `Monteur` VALUES ('M1','Roth','F2','A3',5500),('M2','Gelb','F1','A2',5500),('M3','Braun','F1','A1',5500),('M4','Weiss','F2','A2',5500);
 /*!40000 ALTER TABLE `Monteur` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -204,7 +205,7 @@ CREATE TABLE `Rapport` (
 
 LOCK TABLES `Rapport` WRITE;
 /*!40000 ALTER TABLE `Rapport` DISABLE KEYS */;
-INSERT INTO `Rapport` VALUES ('M1','K1','2010-08-21',4),('M1','K3','2010-08-21',4),('M2','K2','2010-08-21',8),('M3','K1','2010-08-20',8),('M3','K1','2010-08-21',3),('M3','K2','2010-08-21',2),('M4','K1','2010-08-22',2),('M5','K2','2018-01-19',10);
+INSERT INTO `Rapport` VALUES ('M1','K1','2010-08-21',4),('M1','K3','2010-08-21',4),('M2','K2','2010-08-21',8),('M3','K1','2010-08-20',8),('M3','K1','2010-08-21',3),('M3','K2','2010-08-21',2),('M4','K1','2010-08-22',2);
 /*!40000 ALTER TABLE `Rapport` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -217,4 +218,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-01-28 16:17:26
+-- Dump completed on 2018-02-02 16:26:08
