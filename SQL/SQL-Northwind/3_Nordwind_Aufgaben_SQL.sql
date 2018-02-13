@@ -32,39 +32,38 @@ ORDER BY ArtikelName DESC;
 -- 6) Schreibe eine Abfrage, die die Spalte Ort der Kundentabelle ausgibt, ohne Mehrfachnennungen.
 SELECT Ort FROM Kunde GROUP BY Ort;
 
-
 -- Abfrage in Funktionen
 
-
-
 -- 1) Liste alle Lieferanten auf, die mehr als 3 Produkte liefern.
-
-
+SELECT Lieferant_Nr, COUNT(*) FROM Artikel
+GROUP BY Lieferant_Nr HAVING COUNT(*) >= 3;
 
 -- 2) Liste die Lieferanten mit ihrem jeweils teuersten Artikel auf. Es sollen
 --    nur die Lieferanten angezeigt werden, bei denen der teuerste Artikel billiger
 --    als 10.- Euro ist.
-
-
+SELECT Lieferant_Nr, MAX(Einzelpreis) FROM Artikel
+GROUP BY Lieferant_Nr HAVING MAX(Einzelpreis) <= 10.00;
 
 -- 3) Liste den Nachnamen des Mitarbeiters auf, der am längsten eingestellt war.
-
+SELECT Nachname, Einstellung FROM Personal WHERE Einstellung = (SELECT MIN(Einstellung) FROM Personal);
 
 
 -- Abfragen über mehrere Tabellen
 
-
-
 -- 1) Welcher Kunde hat noch nie bestellt? Benutze einen OUTER JOIN.
-
+SELECT k.Kontaktperson, b.Bestellung_Nr FROM Kunde k LEFT OUTER JOIN Bestellung b USING(Kunden_Code)
+WHERE Bestellung_Nr IS NULL;
 
 
 -- 2) Schreibe eine Abfrage, die die Kontaktperson der Lieferanten 
 --    ausgibt, die die Produkte 1 oder 2 oder 3 liefern.
-
+SELECT Kontaktperson FROM Lieferant l, Artikel a WHERE 
+a.Artikel_Nr = 1 OR a.Artikel_Nr = 2 OR a.Artikel_Nr = 3
+GROUP BY Kontaktperson;
 
 
 -- 3) Schreibe eine Abfrage, die Kundennamen, die entsprechenden Bestellnummern 
 --    und die Namen des Angestellten, der die Bestellung bearbeitet hat, ausgibt. 
-
+SELECT Kontaktperson, Bestellung_Nr, Vorname, Nachname FROM Kunde, Bestellung, Personal
+WHERE Kunde.Kunden_Code = Bestellung.Kunden_Code AND Bestellung.Personal_Nr = Personal.Personal_Nr;
 

@@ -61,7 +61,7 @@ select Nachname, Einstellung from Personal where Einstellung IN (select min(Eins
 
 -- 1) Welcher Kunde hat noch nie bestellt? Benutze einen OUTER JOIN.
 
-SELECT DISTINCT Kontaktperson, Bestellung_Nr FROM Kunden k LEFT JOIN Bestellung b ON  k.Kunden_Code = b.Kunden_Code WHERE Bestellung_Nr IS NULL;
+SELECT DISTINCT Kontaktperson, Bestellung_Nr FROM Kunde k LEFT JOIN Bestellung b ON  k.Kunden_Code = b.Kunden_Code WHERE Bestellung_Nr IS NULL;
 
 
 -- 2) Schreibe eine Abfrage, die die Kontaktperson der Lieferanten 
