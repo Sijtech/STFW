@@ -50,7 +50,7 @@ USING(A_Nr) WHERE M_Name IS NULL; -- SAME
 
 -- Seite 9
 -- Zeigt die Monteure und Abteilungen, welche keine Beziehungen haben(also NULL sind)
-SELECT M_Name, Abteilung FROM Monteur m LEFT JOIN Abteilung a
+SELECT M_Name, Abteilung FROM Monteur m RIGHT JOIN Abteilung a
 ON a.A_Nr = m.A_Nr WHERE m.A_Nr IS NULL UNION
 SELECT M_Name, Abteilung FROM Monteur m RIGHT JOIN Abteilung a
 ON a.A_Nr = m.A_Nr WHERE M_Name IS NULL;
@@ -62,3 +62,18 @@ ON a.A_Nr = m.A_Nr WHERE M_Name IS NULL;
 -- Seite 11
 SELECT Abteilung, M_Name FROM Abteilung a LEFT JOIN Monteur m
 USING(A_Nr) ORDER BY Abteilung ASC, M_Name;
+
+-- Seite 12
+SELECT M_Name, Abteilung FROM Monteur m INNER JOIN Abteilung a USING(A_Nr)
+UNION
+SELECT M_Name, "nicht zugeordnet!!!" FROM Monteur m WHERE A_Nr IS NULL
+ORDER BY M_Name;
+
+-- Seite 13
+SELECT Abteilung, count(M_Name) as 'Anzahl MA' FROM Abteilung LEFT JOIN Monteur USING(A_Nr)
+GROUP BY Abteilung;
+
+-- Seite 14
+SELECT Abteilung as 'grösste Abteilung', count(M_Name) as 'mit Anzahl MA'
+FROM Abteilung LEFT JOIN Monteur USING(A_Nr) GROUP BY Abteilung
+HAVING COUNT(M_Name) = (SELECT COUNT(M_Name) FROM Monteur GROUP BY A_Nr ORDER BY 1 DESC LIMIT 1);
