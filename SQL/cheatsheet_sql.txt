@@ -1,0 +1,17 @@
+# MySQL Workbench:
+## Datenbank sichern
+Server -> Data Export -> Start Export
+##Datenbank importieren
+Server -> Data Import
+
+CLI:
+## Datenbank sichern
+mysqldump -u root -p -h 127.0.0.1 --add-drop-database --databases Flugschule > flugschule.sql
+## Datenbank importieren
+mysql -u root -p -h 127.0.0.1 Flugschule < flugschule.sql
+## Benutzer erstellen
+create uset 'joel'@'localhost' identified by 'passwort';
+## Benutzer berechtigen
+grant select, insert on database_name.* to 'joel'@'localhost';
+### Vollzugriff
+grant all privileges on *.* to 'joel'@'localhost';
