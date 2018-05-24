@@ -30,18 +30,17 @@ do
   if [[ $getInstalledSoftware != *$i* ]]
   then
     #Installieren
-    #echo "aptitude --assume-yes install $i"
     aptitude --assume-yes install $i
     #abbrechen, wenn Installation fehlschlägt
     if [ $? -ne 0 ]
-      then
-        echo "$i konnte nicht installiert werden" >> $log
-        exit 5 #Installationsproblem
-      fi
+    then
+      echo "$i konnte nicht installiert werden" >> $log
+      exit 5 #Installationsproblem
+    fi
+    echo "$i wurde installiert" >> $log
   else
     #Falls bereits vorhanden, informieren
-    #echo "Already installed: $i"
-    echo "$i ist/wurde installiert" >> $log
+    echo "$i ist bereits installiert" >> $log
   fi
 done
 
@@ -54,6 +53,7 @@ then
   echo "Die Tomcat Version $tomcatVersion konnte nicht heruntergeladen werden" >> $log
   exit 6 #Downloadproblem
 fi
+echo "$tomcatVersion wurde heruntergeladen" >> $log
 #Tomcat ins Verzeichnis /opt/tomcat8 entpacken. Wenn vorhanden überschreiben
 tar -xf /tmp/$tomcatVersion.tar.gz -C /opt/tomcat8/
 if [ $? -ne 0 ]
@@ -61,6 +61,7 @@ then
   echo "Entpacken von $tomcatVersion ist fehlgeschlagen" >> $log
   exit 7 #Problem beim entpacken
 fi
+echo "$tomcatVersion wurde entpackt" >> $log
 #Link erstellen
 ln -sfn /opt/tomcat8/$tomcatVersion/ /opt/tomcat
 #Download löschen, wenn vorhanden
