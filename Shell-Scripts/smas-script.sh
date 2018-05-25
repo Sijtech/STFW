@@ -16,7 +16,7 @@ mkdir -p /opt/tomcat8
 #Log Datei
  /home/sij/Documents/log.txt
 log="/home/sij/Documents/log.txt"
-echo "START" > $log
+echo "$(date +%Y-%m-%d):" > $log
 
 ##Step2 - Software installieren, wenn nicht vorhanden
 #Array mit Software, welche installiert werden soll
