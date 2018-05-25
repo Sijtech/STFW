@@ -14,7 +14,6 @@ ln -sfn /opt /home/prod
 #Ordner erstellen, wenn nicht vorhanden
 mkdir -p /opt/tomcat8
 #Log Datei
- /home/sij/Documents/log.txt
 log="/home/sij/Documents/log.txt"
 echo "$(date +%Y-%m-%d):" > $log
 
